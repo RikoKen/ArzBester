@@ -1,0 +1,249 @@
+<?php 
+session_start();
+require_once 'php/db.php';
+
+$name = $_SESSION['username'];
+
+$nick = explode('_', $name)[0];
+$name = explode('_', $name)[1];
+$player__skin = $_SESSION['player__skin'];
+?>
+<!DOCTYPE html>
+<html lang="ru" class="  webp webp-alpha webp-animation webp-lossless">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        Пополнение счета - Донат - XtremeBonus
+    </title>
+    <meta data-n-head="ssr" data-hid="viewport" name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="__nuxt">
+        <!---->
+        <div id="__layout">
+            <div class="app">
+                <div class="vue-notification-group" style="width:300px;top:0px;right:0px;">
+                    <span>
+                    </span>
+                </div>
+                <div class="navbar">
+					<div class="navbar__container container"><button class="navbar__toggle-menu"></button> <a href="/"
+							class="navbar__logo nuxt-link-active">
+							<div class="logo"><img src="/images/logos/logo.svg" alt="Логотип Radmir CRMP."
+									class="logo__image">
+								<div class="logo__name">XTREME<span>BONUS</span></div>
+							</div>
+						</a>
+						<div class="navbar__links">
+							<a href="/" class="navbar-link">Главная</a>
+							<a href="/" class="navbar-link">Форум</a>
+							<a href="news.php" aria-current="page" class="navbar-link">Новости</a>
+							<a href="shop.php" class="navbar-link active">Магазин</a>
+							<a href="forbes.php" class="navbar-link">FORBES</a>
+						</div>
+						<?php
+						$getauth = $_SESSION['player_auth'];
+						if ($getauth == 0) {
+							echo '
+						<a href="login.php" class="navbar__profile login-button login-button--hide-xs">Личный кабинет</a>
+						<a href="login.php" class="navbar__profile login-button login-button--hide-md">Войти</a>';
+						} else {
+							echo '
+                                    <a href="lk.php" aria-current="page" class="navbar__profile user-profile nuxt-link-exact-active nuxt-link-active">
+                                    <div class="user-profile__avatar">
+                                    <picture>
+                                    <source srcset="images/skins/'.$player__skin.'.png" type="image/webp"> 
+                                    <img src="images/skins/'.$player__skin.'.png" alt="Скин RADMIR CRMP" class="user-profile__avatar-image">
+                                    </picture>
+                                    </div> 
+                                    <div class="user-profile__nickname">
+                                        '.$nick.' '.$name.'
+                                    </div></a>';
+						} ?>
+
+
+
+						<div class="navbar-menu-modal vm--container">
+							<div data-modal="mobile-menu" aria-expanded="true" class="vm--overlay">
+								<div class="vm--top-right-slot"></div>
+							</div>
+							<div aria-expanded="true" role="dialog" aria-modal="true" class="vm--modal"
+								style="top: 0px; left: 0px; width: 269px; height: 1022px;">
+								<div class="menu-modal">
+									<div class="menu-modal__links">
+										<a href="/" class="navbar-link menu-modal__link">Главная</a>
+										<a href="/"
+											class="navbar-link menu-modal__link">Форум</a>
+										<a href="news.php" aria-current="page"
+											class="navbar-link menu-modal__link">Новости</a>
+										<a href="shop.php" class="navbar-link menu-modal__link active">Магазин</a>
+										<a href="forbes.php" class="navbar-link menu-modal__link">FORBES</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div class="shop-page">
+                    <div class="shop-page__container container">
+                        <div class="shop-header">
+                            <div class="shop-header__title">
+                                Стань
+                                <span>
+                                    богаче
+                                </span>
+                            </div>
+                            <div class="shop-header__subtitle">
+                                Приобрести любое количество игровой валюты прямо сейчас
+                                <picture>
+                                    <source srcset="_nuxt/img/7e156e0.webp" type="image/webp">
+                                    <img src="_nuxt/img/65db042.png" alt="Money-Mouth Face" width="32" height="32">
+                                </picture>
+                            </div>
+                            <button class="shop-header__button">
+                                Приобрести
+                            </button>
+                        </div>
+                        <div class="shop-mobile-divider">
+                        </div>
+                        <div class="shop-products">
+                            <div class="shop-products__title section-title">
+                                Что можно
+                                <span>
+                                    купить?
+                        <div class="shop-packets">
+                            <div class="shop-packets__title section-title">
+                            </div>
+                            <div class="shop-packets__packets">
+                                <div class="shop-packet">
+                                    <div class="shop-packet__container">
+                                        <div class="shop-packet__name">
+                                            Набор
+                                            <span>
+                                                Старт для начала
+                                            </span>
+                                        </div>
+                                        <div class="shop-packet__sum">
+                                            100 000
+                                        </div>
+                                    </div>
+                                    <div class="shop-packet__buy">
+                                        <button class="shop-packet__button">
+                                            Купить за ₽108
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="shop-packet">
+                                    <div class="shop-packet__container">
+                                        <div class="shop-packet__name">
+                                            Набор
+                                            <span>
+                                                солидненько
+                                            </span>
+                                        </div>
+                                        <div class="shop-packet__sum">
+                                            250 000
+                                        </div>
+                                    </div>
+                                    <div class="shop-packet__buy">
+                                        <button class="shop-packet__button">
+                                            Купить за ₽240
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="shop-packet">
+                                    <div class="shop-packet__container">
+                                        <div class="shop-packet__name">
+                                            Набор
+                                            <span>
+                                                самое то
+                                            </span>
+                                        </div>
+                                        <div class="shop-packet__sum">
+                                            550 000
+                                        </div>
+                                    </div>
+                                    <div class="shop-packet__buy">
+                                        <button class="shop-packet__button">
+                                            Купить за ₽480
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="shop-packet">
+                                    <div class="shop-packet__container">
+                                        <div class="shop-packet__name">
+                                            Набор
+                                            <span>
+                                                воровское
+                                            </span>
+                                        </div>
+                                        <div class="shop-packet__sum">
+                                            1 390 000
+                                        </div>
+                                    </div>
+                                    <div class="shop-packet__buy">
+                                        <button class="shop-packet__button">
+                                            Купить за ₽960
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="shop-packet">
+                                    <div class="shop-packet__container">
+                                        <div class="shop-packet__name">
+                                            Набор
+                                            <span>
+                                                золотые запасы
+                                            </span>
+                                        </div>
+                                        <div class="shop-packet__sum">
+                                            7 500 000
+                                        </div>
+                                    </div>
+                                    <div class="shop-packet__buy">
+                                        <button class="shop-packet__button">
+                                            Купить за ₽4800
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                    <!---->
+                </div>
+                <footer class="footer">
+                    <div class="footer__container container">
+                        <div class="logo">
+                            <img src="assets/logo.svg" alt="Логотип Radmir CRMP." class="logo__image">
+                            <div class="logo__name">
+                                XTREME
+                                <span>
+                                    BONUS © 2024
+                                </span>
+                            </div>
+                        </div>
+                        <div class="footer__links">
+                            <a href="https://radmir.online/terms" target="_blank" class="footer__link">Пользовательское
+                                соглашение</a>
+                            <a href="https://radmir.online/privacy-policy" target="_blank" class="footer__link">Политика
+                                конфиденциальности</a>
+                            <a href="https://vk.com/radmirsup" target="_blank" class="footer__link">Поддержка в чате</a>
+                            <a href="mailto:crmp@radmir.games" class="footer__link">https://vk.com/loboda6</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div id="modals-container">
+    </div>
+    <script src="assets/app.js" defer></script>
+</body>
+
+</html>

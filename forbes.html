@@ -1,0 +1,300 @@
+<?php
+session_start();
+require_once 'php/db.php';
+
+$name = $_SESSION['username'];
+
+$nick = explode('_', $name)[0];
+$name = explode('_', $name)[1];
+
+function money_formating($par)
+{
+    if (strlen($par) < 4) {
+        $first = $par;
+        return "$first";
+    }
+    if (strlen($par) == 4) {
+        $first = substr($par, 0, 1);
+        $two = substr($par, 1, 3);
+        return "$first.$two К";
+    } else if (strlen($par) == 5) {
+        $first = substr($par, 0, 2);
+        $two = substr($par, 2, 3);
+        return "$first.$two К";
+    } else if (strlen($par) == 6) {
+        $first = substr($par, 0, 3);
+        $two = substr($par, 3, 2);
+        return "$first.$two К";
+    } else if (strlen($par) == 7) {
+        $first = substr($par, 0, 1);
+        $two = substr($par, 1, 3);
+        return "$first.$two КК";
+    } else if (strlen($par) == 8) {
+        $first = substr($par, 0, 2);
+        $two = substr($par, 2, 3);
+        return "$first.$two КК";
+    } else if (strlen($par) == 9) {
+        $first = substr($par, 0, 3);
+        $two = substr($par, 3, 2);
+        return "$first.$two КК";
+    } else if (strlen($par) == 10) {
+        $first = substr($par, 0, 1);
+        $two = substr($par, 1, 2);
+        return "$first.$two B";
+    } else if (strlen($par) == 11) {
+        $first = substr($par, 0, 2);
+        $two = substr($par, 2, 3);
+        return "$first.$two B";
+    } else if (strlen($par) == 12) {
+        $first = substr($par, 0, 3);
+        $two = substr($par, 3, 3);
+        return "$first.$two B";
+    } else if (strlen($par) == 13) {
+        $first = substr($par, 0, 1);
+        $two = substr($par, 1, 3);
+        return "$first.$two T";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>FORBES</title>
+    <meta charset="UTF-8">
+    <link data-n-head="ssr" rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="__nuxt">
+        <!---->
+        <div id="__layout">
+            <div class="app">
+                <div class="vue-notification-group" style="width: 300px; top: 0px; right: 0px;">
+                    <span>
+                    </span>
+                </div>
+                <div class="navbar">
+                    <div class="navbar__container container"><button class="navbar__toggle-menu"></button> <a href="/"
+                            class="navbar__logo nuxt-link-active">
+                            <div class="logo"><img src="/images/logos/logo.svg" alt="Логотип Radmir CRMP."
+                                    class="logo__image">
+                                <div class="logo__name">XTREME<span>BONUS</span></div>
+                            </div>
+                        </a>
+                        <div class="navbar__links">
+                            <a href="/" class="navbar-link">Главная</a>
+                            <a href="/" class="navbar-link">Форум</a>
+                            <a href="news.php" aria-current="page" class="navbar-link">Новости</a>
+                            <a href="https://vk.com/uslugi-223141113?screen=group" class="navbar-link">Магазин</a>
+                            <a href="forbes.php" class="navbar-link active">FORBES</a>
+                        </div>
+                        <?php
+                        $player__skin = $_SESSION['player__skin'];
+                        $getauth = $_SESSION['player_auth'];
+                        if ($getauth == 0) {
+                            echo '
+						<a href="login.php" class="navbar__profile login-button login-button--hide-xs">Личный кабинет</a>
+						<a href="login.php" class="navbar__profile login-button login-button--hide-md">Войти</a>';
+                        } else {
+                            echo '
+                                    <a href="lk.php" aria-current="page" class="navbar__profile user-profile nuxt-link-exact-active nuxt-link-active">
+                                    <div class="user-profile__avatar">
+                                    <picture>
+                                    <source srcset="images/skins/'.$player__skin.'.png" type="image/webp"> 
+                                    <img src="images/skins/'.$player__skin.'.png" alt="Скин RADMIR CRMP" class="user-profile__avatar-image">
+                                    </picture>
+                                    </div> 
+                                    <div class="user-profile__nickname">
+                                        '.$nick.' '.$name.'
+                                    </div></a>';
+                        } ?>
+
+
+
+                        <div class="navbar-menu-modal vm--container">
+                            <div data-modal="mobile-menu" aria-expanded="true" class="vm--overlay">
+                                <div class="vm--top-right-slot"></div>
+                            </div>
+                            <div aria-expanded="true" role="dialog" aria-modal="true" class="vm--modal"
+                                style="top: 0px; left: 0px; width: 269px; height: 1022px;">
+                                <div class="menu-modal">
+                                    <div class="menu-modal__links">
+                                        <a href="/" class="navbar-link menu-modal__link">Главная</a>
+                                        <a href="/" class="navbar-link menu-modal__link">Форум</a>
+                                        <a href="news.php" aria-current="page"
+                                            class="navbar-link menu-modal__link">Новости</a>
+                                        <a href="https://vk.com/uslugi-223141113?screen=group" class="navbar-link menu-modal__link">Магазин</a>
+                                        <a href="forbes.php" class="navbar-link menu-modal__link active">FORBES</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forbes">
+                    <div class="forbes__container container">
+                        <div class="forbes__title">
+                            <img src="_nuxt/img/e7e4430.svg" alt="RADMIR Forbes">
+                        </div>
+                        <div class="forbes__content">
+                            <?php 
+                                $sqli = "SELECT * FROM `accounts` ORDER BY `money` DESC LIMIT 10";
+                                $resulted = mysqli_query($connect, $sqli);
+
+                                while($row = mysqli_fetch_array($resulted)){
+                                    $rows[] = $row;
+                                }
+                            ?>
+                                    <div class="forbes__top">
+                                        <div class="top-item top-item--silver">
+                                            <div class="top-item__position">
+                                                2
+                                            </div>
+                                            <div class="top-item__figure">
+                                                <div class="top-item__rect">
+                                                    <picture>
+                                                        <source srcset="images/skins/<?=$rows[1]['skin']?>.png" type="image/webp">
+                                                        <img src="images/skins/<?=$rows[1]['skin']?>.png"
+                                                            alt="" class="top-item__skin">
+                                                    </picture>
+                                                </div>
+                                            </div>
+                                            <div class="top-item__nickname">
+                                                <?php 
+                                                    $nick = explode('_', $rows[1]['name'])[0];
+                                                    $name = explode('_', $rows[1]['name'])[1];
+                                                    echo $nick. ' ' .$name;
+                                                ?>
+                                            </div>
+                                            <div class="top-item__balance">
+                                                <?= money_formating($rows[1]['money']) ?>
+                                            </div>
+                                        </div>
+                                        <div class="top-item top-item--gold">
+                                            <div class="top-item__position">
+                                                1
+                                            </div>
+                                            <div class="top-item__figure">
+                                                <div class="top-item__rect">
+                                                    <picture>
+                                                        <source src="images/skins/<?=$rows[0]['skin']?>.png" type="image/webp">
+                                                        <img src="images/skins/<?=$rows[0]['skin']?>.png" alt="" class="top-item__skin">
+                                                    </picture>
+                                                </div>
+                                            </div>
+                                            <div class="top-item__nickname">
+                                                <?php 
+                                                    $nick = explode('_', $rows[0]['name'])[0];
+                                                    $name = explode('_', $rows[0]['name'])[1];
+                                                    echo $nick. ' ' .$name;
+                                                ?>
+                                            </div>
+                                            <div class="top-item__balance">
+                                                <?= money_formating($rows[0]['money']) ?>
+                                            </div>
+                                        </div>
+                                        <div class="top-item top-item--bronze">
+                                            <div class="top-item__position">
+                                                3
+                                            </div>
+                                            <div class="top-item__figure">
+                                                <div class="top-item__rect">
+                                                    <picture>
+                                                        <source srcset="images/skins/<?=$rows[2]['skin']?>.png" type="image/webp">
+                                                        <img src="images/skins/<?=$rows[2]['skin']?>.png"
+                                                            alt="" class="top-item__skin">
+                                                    </picture>
+                                                </div>
+                                            </div>
+                                            <div class="top-item__nickname">
+                                                <?php 
+                                                    $nick = explode('_', $rows[2]['name'])[0];
+                                                    $name = explode('_', $rows[2]['name'])[1];
+                                                    echo $nick. ' ' .$name;
+                                                ?>
+                                            </div>
+                                            <div class="top-item__balance">
+                                                <?= money_formating($rows[2]['money']) ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <div class="forbes__list">
+                                <?php
+                                $numeric = 0;
+                                $sql = "SELECT * FROM `accounts` ORDER BY `money` DESC LIMIT 10";
+                                $result = mysqli_query($connect, $sql);
+                                ?>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <div class="forbes-item">
+                                        <div class="forbes-item__position">
+                                            <?= $numeric = $numeric + 1 ?>
+                                        </div>
+                                        <div class="forbes-item__username">
+                                            <?php
+                                            $nick = explode('_', $row['name'])[0];
+                                            $name = explode('_', $row['name'])[1];
+                                            echo $nick . ' ' . $name;
+                                            ?>
+                                        </div>
+                                        <div class="forbes-item__server">
+                                            01 сервер
+                                        </div>
+                                        <div class="forbes-item__balance">
+                                            <?= money_formating($row['money']) ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                                <div class="forbes-item-divider" style="display: none;">
+                                    <span>
+                                    </span>
+                                    <span>
+                                    </span>
+                                    <span>
+                                    </span>
+                                </div>
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="footer__container container">
+                        <div class="logo">
+                            <img src="assets/logo.svg" alt="Логотип Radmir CRMP." class="logo__image">
+                            <div class="logo__name">
+                                XTREME
+                                <span>
+                                    BONUS © 2025
+                                </span>
+                            </div>
+                        </div>
+                        <div class="footer__links">
+                            <a href="https://radmir.online/terms" class="footer__link" target="_blank">Пользовательское
+                                соглашение</a>
+                            <a href="https://radmir.online/privacy-policy" class="footer__link" target="_blank">Политика
+                                конфиденциальности</a>
+                            <a href="https://vk.com/radmirsup" target="_blank" class="footer__link">Поддержка в чате</a>
+                            <a href="mailto:crmp@radmir.games" class="footer__link">https://vk.com/loboda6</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="assets/app.js" defer></script>
+    <div id="modals-container">
+    </div>
+</body>
+
+</html>

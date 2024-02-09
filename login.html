@@ -1,0 +1,206 @@
+<?php
+session_start();
+require_once 'php/db.php';
+?>
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://radmir.onlinelogin.php -->
+<html lang="ru" class="  webp webp-alpha webp-animation webp-lossless">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Личный кабинет - Вход - XtremeBonus </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="__nuxt">
+        <div id="__layout">
+            <div class="form-page">
+                <div class="vue-notification-group" style="width: 300px; top: 0px; right: 0px;"><span>
+                        <div data-id="19" id='notification1' class="vue-notification-wrapper vn-fade-leave-active vn-fade-leave-to"
+                            style='transition: all .4s'>
+                            <div class="vue-notification-template vue-notification error">
+                                <div class="notification-content">
+                                </div>
+                            </div>
+                        </div>
+                    </span></div>
+                <div class="form-page__navbar">
+                    <div class="navbar">
+                        <div class="navbar__container container">
+                            <button class="navbar__toggle-menu">
+                            </button>
+                            <a href="/" class="navbar__logo nuxt-link-active">
+                                <div class="logo"><img src="assets/logo.svg" alt="Логотип Radmir CRMP."
+                                        class="logo__image">
+                                    <div class="logo__name">RADMIR<span>RP</span></div>
+                                </div>
+                            </a>
+                            <div class="navbar__links">
+                                <a href="/" class="navbar-link nuxt-link-active">Главная</a>
+                                <a href="/" class="navbar-link">Форум</a>
+                                <a href="news.html" class="navbar-link">Новости</a>
+                                <a href="shop.html" class="navbar-link">Магазин</a>
+                                <a href="forbes.html" class="navbar-link">FORBES</a>
+                            </div>
+                            <a href="login.php" aria-current="page"
+                                class="navbar__profile login-button login-button--hide-xs nuxt-link-exact-active nuxt-link-active">
+                                Личный кабинет
+                            </a>
+                            <a href="login.php" aria-current="page"
+                                class="navbar__profile login-button login-button--hide-md nuxt-link-exact-active nuxt-link-active">
+                                Войти
+                            </a>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+                <div class="form-page__header">
+                    <div class="back-home">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path
+                                d="M229.9 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L94.569 282H436c6.627 0 12-5.373 12-12v-28c0-6.627-5.373-12-12-12H94.569l155.13-155.13c4.686-4.686 4.686-12.284 0-16.971L229.9 38.101c-4.686-4.686-12.284-4.686-16.971 0L3.515 247.515c-4.686 4.686-4.686 12.284 0 16.971L212.929 473.9c4.686 4.686 12.284 4.686 16.971-.001z">
+                            </path>
+                        </svg>
+                        <a href="/" class="nuxt-link-active">На главную</a>
+                    </div>
+                    <div class="load-launcher">
+                        Еще не играешь?
+                        <a href="https://dl.hasslecdn.com/RADMIR_LAUNCHER.exe" target="_blank">Скачать лаунчер</a>
+                    </div>
+                </div>
+                <div class="form-page__container">
+                    <div>
+                        <div class="section-title">
+                            Личный
+                            <span>
+                                кабинет
+                            </span>
+                        </div>
+                        <div>
+                            <div class="vue-notification-group" style="width: 300px; top: 0px; right: 0px;">
+                                <span>
+                                </span>
+                            </div>
+                            <button class="vk-btn">
+                                <span>
+                                </span>
+                                Войти через ВКонтакте
+                            </button>
+                            <div class="login-divider">
+                                или
+                            </div>
+                                <div class="form__inputs">
+                                    <div class="select">
+                                        <div class="select__overlay" style></div>
+                                        <div class="select__active">
+                                            <div class="server-select-option">
+                                                <div class="server-select-option__name">
+                                                    XTREME<span>BONUS 1</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="select__options" style="display: none; max-height: 125.75px;"
+                                            data-simplebar="init">
+                                            <div class="simplebar-wrapper" style="margin: -8px;">
+                                                <div class="simplebar-height-auto-observer-wrapper">
+                                                    <div class="simplebar-height-auto-observer"></div>
+                                                </div>
+                                                <div class="simplebar-placeholder" style="width: auto; height: 716px;">
+                                                </div>
+                                            </div>
+                                            <div class="simplebar-track simplebar-horizontal"
+                                                style="visibility: hidden;">
+                                                <div class="simplebar-scrollbar" style="width: 0px; display: none;">
+                                                </div>
+                                            </div>
+                                            <div class="simplebar-track simplebar-vertical"
+                                                style="visibility: visible;">
+                                                <div class="simplebar-scrollbar"
+                                                    style="height: 25px; display: block; transform: translate3d(0px, 0px, 0px);">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <input id='input__name' name="username" type="text" placeholder="Мой никнейм"
+                                            value="" class="input__element"> <svg width="12" height="12"
+                                            viewBox="0 0 12 12" fill="none" stroke="#1E1D1D" stroke-opacity="0.45"
+                                            stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" class="input__icon">
+                                            <path
+                                                d="M1 12C1 9.23858 3.23858 7 6 7C8.76142 7 11 9.23858 11 12M8 3C8 4.10457 7.10457 5 6 5C4.89543 5 4 4.10457 4 3C4 1.89543 4.89543 1 6 1C7.10457 1 8 1.89543 8 3Z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="input"><input id='input__password' name="password" type="password"
+                                            placeholder="Пароль" value="" class="input__element"> <svg width="10"
+                                            height="15" viewBox="0 0 10 15" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="input__icon">
+                                            <path
+                                                d="M7 7V3C7 1.89543 6.10457 1 5 1C3.89543 1 3 1.89543 3 3V7M9 10C9 12.2091 7.20914 14 5 14C2.79086 14 1 12.2091 1 10C1 7.79086 2.79086 6 5 6C7.20914 6 9 7.79086 9 10Z"
+                                                stroke="#1E1D1D" stroke-opacity="0.45" stroke-width="1.5"></path>
+                                        </svg></div>
+                                </div>
+                                <div class="form__buttons"><button id='come' type="submit" class="form-button"><span
+                                            class="loader" style="display:none;"></span> <span>Войти</span></button> <a
+                                        href="/recovery-password" class="restore-account-link">Забыли пароль?</a></div>
+                        <script>
+                            $(document).ready(function() {
+                                $('button#come'). on('click', function() {
+                                    let password =  $('input#input__password').val();
+                                    let username =  $('input#input__name').val();
+
+                                    let content = $('.notification-content');
+                                    let notification__block = $('#notification1');
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "php/auth.php",
+                                        dataType : 'json',
+                                        data: { password: password, username: username },
+                                        success(data) {
+                                            if(data.status == false) {
+                                                content.html(data.message);
+                                                notification__block.removeClass('vn-fade-leave-to');
+
+                                                setTimeout(function() {
+                                                    content.html('');
+                                                    notification__block.addClass('vn-fade-leave-to');
+                                                }, 2000);
+                                            } else {
+                                                document.location.href = '/lk.php';
+                                            }
+                                        }
+                                    })
+
+
+                                    // if (!password || !username) {
+                                    //     content.html('Не все поля заполнены');
+                                    //     notification__block.removeClass('vn-fade-leave-to');
+
+                                    //     setTimeout(function(){
+                                    //         notification__block.addClass('vn-fade-leave-to');
+                                    //         content.html('');
+                                    //     }, 2000);
+                                    // } 
+                                });
+                            });
+                        </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/app.js" defer></script>
+</body>
+
+</html>

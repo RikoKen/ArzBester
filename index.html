@@ -1,0 +1,212 @@
+<?php
+session_start();
+require_once 'php/db.php';
+$name = $_SESSION['username'];
+
+$nick = explode('_', $name)[0];
+$name = explode('_', $name)[1];
+?>
+<!DOCTYPE html>
+<html lang="ru" class=" webp webp-alpha webp-animation webp-lossless">
+
+<head>
+	<title>Xtreme Bonus|Играй вместе с друзьями!</title>
+	<meta charset="UTF-8">
+	<link data-n-head="ssr" rel="icon" type="image/svg+xml" href="assets/logo.svg">
+	<link rel="stylesheet" href="style.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div id="__nuxt">
+		<div id="__layout">
+			<div class="app">
+				<div class="vue-notification-group" style="width: 300px; top: 0px; right: 0px;"><span></span></div>
+				<div class="navbar">
+					<div class="navbar__container container"><button class="navbar__toggle-menu"></button> <a href="/"
+							class="navbar__logo nuxt-link-active">
+							<div class="logo"><img class="logoss" src="../xtreme-bonus.ru/images/logos/logo.png" alt="Логотип Radmir CRMP."
+									class="logo__image">
+								<div class="logo__name">Arizona<span>Bester</span></div>
+							</div>
+						</a>
+						<div class="navbar__links">
+							<a href="index.html" class="navbar-link active">Главная</a>
+							<a href="http://koladnfk.beget.tech/index.php" class="navbar-link">Форум</a>
+							<a href="news.html" aria-current="page" class="navbar-link">Новости</a>
+							<a href="shop.html" class="navbar-link">Магазин</a>
+							<a href="forbes.html" class="navbar-link">FORBES</a>
+						</div>
+
+
+						<div class="navbar-menu-modal vm--container">
+							<div data-modal="mobile-menu" aria-expanded="true" class="vm--overlay">
+								<div class="vm--top-right-slot"></div>
+							</div>
+							<div aria-expanded="true" role="dialog" aria-modal="true" class="vm--modal"
+								style="top: 0px; left: 0px; width: 269px; height: 1022px;">
+								<div class="menu-modal">
+									<div class="menu-modal__links">
+										<a href="/" class="navbar-link menu-modal__link active">Главная</a>
+										<a href="https://forum.radmir.games"
+											class="navbar-link menu-modal__link">Форум</a>
+										<a href="news.php" aria-current="page"
+											class="navbar-link menu-modal__link">Новости</a>
+										<a href="shop.html" class="navbar-link menu-modal__link">Магазин</a>
+										<a href="forbes.php" class="navbar-link menu-modal__link">FORBES</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="header">
+						<div class="header-bg header-bg--7"></div>
+						<div class="header__bg header__bg--1"></div>
+						<div class="header__bg header__bg--4"></div>
+						<div class="header__bg header__bg--5"></div>
+						<div class="header__container container">
+							<div class="header__name">Arz-Bester</div>
+							<div class="header__description">Присоединяйся, и кайфуй вместе с нами 🚀</div>
+							<div class="header__play-button">
+								<a href='#start'><button class="play-button"><span class="play-button__text">Начать
+											играть</span></a>
+								<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxMyAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExLjUgNy4xMzM5N0MxMi4xNjY3IDcuNTE4ODggMTIuMTY2NyA4LjQ4MTEzIDExLjUgOC44NjYwM0wyLjUgMTQuMDYyMkMxLjgzMzMzIDE0LjQ0NzEgMSAxMy45NjYgMSAxMy4xOTYyTDEgMi44MDM4NUMxIDIuMDM0MDUgMS44MzMzMyAxLjU1MjkyIDIuNSAxLjkzNzgyTDExLjUgNy4xMzM5N1oiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K"
+									alt="" class="play-button__icon">
+								</button>
+							</div>
+							<div class="header__bg header__bg--2"></div>
+							<div class="header__bg header__bg--3"></div>
+						</div>
+					</div>
+					<div class="monitoring">
+						<div class="monitoring__values container">
+							<div class="monitoring__value-current"> Arz-Bester </div>
+							<div class="monitoring__value-max"></div>
+						</div>
+					</div>
+					<div class="how-to-start" id="start">
+						<div class="how-to-start__wrapper container">
+							<div class="how-to-start__title">
+								Начинай играть
+								<br>
+								<span>в пару кликов</span>
+							</div>
+							<div class="how-to-start__screenshot screenshot">
+								<source srcset="_nuxt/img/4e1022c.webp" type="image/webp">
+								<img src="_nuxt/img/launcher.webp" alt="XtremeBonus Launcher" class="screenshot__image">
+							</div>
+							<p class="how-to-start__desc"> Скачайте лаунчер,RADMIR,
+								СКАЧАЙТЕ СБОРКУ ПРОЕКТА и закидывайте ее в корень Radmir Launcher (путь: resources/projects/crmp).
+							</p>
+							<a href="https://dl.hasslecdn.com/RADMIR_LAUNCHER.exe" target="_blank"
+								class="how-to-start__button download-button"><span class="download-button__text">Скачать
+									RADMIR Launcher</span> <img
+									src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgMTFWMTRDMSAxNC41NTIzIDEuNDQ3NzIgMTUgMiAxNUgxMkMxMi41NTIzIDE1IDEzIDE0LjU1MjMgMTMgMTRWMTEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDFWMTBNNyAxMEw0IDcuNk03IDEwTDEwIDcuNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
+									alt="Download Icon" class="download-button__image"></a>
+														<a href="https://drive.google.com/file/d/1HC9J6OdeoTN10xIoe2MAMXX0sh4Sv5BL/view?usp=sharing" target="_blank"
+								class="how-to-start__button download-button"><span class="download-button__text">Скачать
+									Cборку Google Drive</span> <img
+									src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgMTFWMTRDMSAxNC41NTIzIDEuNDQ3NzIgMTUgMiAxNUgxMkMxMi41NTIzIDE1IDEzIDE0LjU1MjMgMTMgMTRWMTEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDFWMTBNNyAxMEw0IDcuNk03IDEwTDEwIDcuNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
+									alt="Download Icon" class="download-button__image"></a>
+															<a href="https://disk.yandex.ru/d/PXrOd-ifBFPizQ" target="_blank"
+								class="how-to-start__button download-button"><span class="download-button__text">Скачать
+									Cборку Яндекс Диск</span> <img
+									src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgMTFWMTRDMSAxNC41NTIzIDEuNDQ3NzIgMTUgMiAxNUgxMkMxMi41NTIzIDE1IDEzIDE0LjU1MjMgMTMgMTRWMTEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik03IDFWMTBNNyAxMEw0IDcuNk03IDEwTDEwIDcuNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg=="
+									alt="Download Icon" class="download-button__image"></a>	
+						</div>
+					</div>
+					<div class="posts container">
+						<div class="posts__title section-title">Новости<span>Проекта</span></div>
+						<div class="posts__items">
+							<div class="posts-list">
+								<div class="posts-list__items">
+								<?php
+										$sql = "SELECT * FROM `news__site` ORDER BY `id` DESC LIMIT 4";
+										$result = mysqli_query($connect, $sql);
+
+									while ($row = mysqli_fetch_assoc($result)) { ?>
+									<div class="post-card posts-list__item">
+										<picture class="post-card__picture">
+											<img src="news/<?=$row['href']?>" alt="" class="post-card__image">
+										</picture> 
+										<a href="/" class="post-card__title"><?= $row['title'] ?></a>
+										<div class="post-card__description"><?= $row['description'] ?></div>
+										<div class="post-card__date"><?= $row['date'] ?></div>
+										<div class="post-card__action">
+											<a href="/" target="_blank" class="post-card__link"> 
+												Подробнее 
+												<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMCAYAAACA0IaCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfklEQVQoka3SQQrEIAyF4V9IF132/hfzFjWKKMxAuynU2lKIM2/jQvLxJDrvPcZsx+n6C6m1WrEWvYCSc7YijrPdBZSU0kirHpyAr8QYR7Ae/ACLhBC2lwFLVlHVP1kgqnpbsSHtq+ZfmrWQg/Ft3iAY+2ePEICUUuy9HiCAHbI+MRb4roFpAAAAAElFTkSuQmCC" alt="">
+											</a>
+										</div>
+									</div>
+									<?php }?>
+							       <div id="vk_post_-223141113_43"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_43", -223141113, 43, 'Ysn4OJCSp6hXOZs7938Xxc4TLrNg');
+  }());
+</script>
+<div id="vk_post_-223141113_40"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_40", -223141113, 40, 'aRP9bRNlI5bF8Nh_2FYkJKiAaTsB');
+  }());
+</script>
+<div id="vk_post_-223141113_37"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_37", -223141113, 37, 'pMkdxbZZdaddRdT2JplPDTPCUTgd');
+  }());
+</script>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="social-network homepage-sn">
+						<div class="container">
+							<div class="social-network__title section-title"> Наши<span>социальные сети</span></div>
+							<div class="social-network__items">
+								<a target="_blank" href="https://discord.gg/qzPN4cUb8U"
+									class="social-network__item sn-icon sn-icon--ig"></a>
+								<a target="_blank" href="https://vk.com/xtremebonus"
+									class="social-network__item sn-icon sn-icon--vk"></a>
+								<a target="_blank" href="https://www.youtube.com/@artemplay955"
+									class="social-network__item sn-icon sn-icon--yt"></a>
+								<a target="_blank" href="https://t.me/Xtremebonus"
+									class="social-network__item sn-icon sn-icon--tt"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer class="footer">
+					<div class="footer__container container">
+						<div class="logo"><img src="assets/logo.svg" alt="Логотип Radmir CRMP." class="logo__image">
+							<div class="logo__name"> XTREME<span>BONUS © 2024</span></div>
+						</div>
+						<div class="footer__links"><a href="https://radmir.online/terms" class="footer__link"
+								target="_blank">Пользовательское соглашение</a> <a
+								href="https://radmir.online/privacy-policy" class="footer__link"
+								target="_blank">Политика конфиденциальности</a> <a href="https://vk.com/radmirsup"
+								target="_blank" class="footer__link">Поддержка в чате</a> <a
+								href="mailto:crmp@radmir.games" class="footer__link"></a></div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+	<script src="assets/app.js" defer></script>
+</body>
+
+</html>

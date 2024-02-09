@@ -1,0 +1,155 @@
+<?php 
+session_start();
+require_once 'php/db.php';
+
+$name = $_SESSION['username'];
+
+$nick = explode('_', $name)[0];
+$name = explode('_', $name)[1];
+
+$player__skin = $_SESSION['player__skin'];
+?>
+<!DOCTYPE html>
+<html lang="ru" class="  webp webp-alpha webp-animation webp-lossless">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Новости - XtremeBonus</title>
+	<meta data-n-head="ssr" data-hid="viewport" name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="style.css">
+	  <meta charset="UTF-8">
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div id="__nuxt">
+		<div id="__layout">
+			<div class="app">
+				<div class="vue-notification-group" style="width:300px;top:0px;right:0px;"><span></span></div>
+				<div class="navbar">
+					<div class="navbar__container container"><button class="navbar__toggle-menu"></button> <a href="/"
+							class="navbar__logo nuxt-link-active">
+							<div class="logo"><img src="/images/logos/logo.svg" alt="Логотип Radmir CRMP."
+									class="logo__image">
+								<div class="logo__name">XTREME<span>BONUS</span></div>
+							</div>
+						</a>
+						<div class="navbar__links">
+							<a href="/" class="navbar-link">Главная</a>
+							<a href="/" class="navbar-link">Форум</a>
+							<a href="news.php" aria-current="page" class="navbar-link active">Новости</a>
+							<a href="https://vk.com/uslugi-223141113?screen=group" class="navbar-link">Магазин</a>
+							<a href="forbes.php" class="navbar-link">FORBES</a>
+						</div>
+						<?php
+						$getauth = $_SESSION['player_auth'];
+						if ($getauth == 0) {
+							echo '
+						<a href="login.php" class="navbar__profile login-button login-button--hide-xs">Личный кабинет</a>
+						<a href="login.php" class="navbar__profile login-button login-button--hide-md">Войти</a>';
+						} else {
+							echo '
+                                    <a href="lk.php" aria-current="page" class="navbar__profile user-profile nuxt-link-exact-active nuxt-link-active">
+                                    <div class="user-profile__avatar">
+                                    <picture>
+                                    <source srcset="images/skins/'.$player__skin.'.png" type="image/webp"> 
+                                    <img src="images/skins/'.$player__skin.'.png" alt="Скин RADMIR CRMP" class="user-profile__avatar-image">
+                                    </picture>
+                                    </div> 
+                                    <div class="user-profile__nickname">
+                                        '.$nick.' '.$name.'
+                                    </div></a>';
+						} ?>
+
+
+
+						<div class="navbar-menu-modal vm--container">
+							<div data-modal="mobile-menu" aria-expanded="true" class="vm--overlay">
+								<div class="vm--top-right-slot"></div>
+							</div>
+							<div aria-expanded="true" role="dialog" aria-modal="true" class="vm--modal"
+								style="top: 0px; left: 0px; width: 269px; height: 1022px;">
+								<div class="menu-modal">
+									<div class="menu-modal__links">
+										<a href="/" class="navbar-link menu-modal__link">Главная</a>
+										<a href="/"
+											class="navbar-link menu-modal__link">Форум</a>
+										<a href="news.php" aria-current="page"
+											class="navbar-link menu-modal__link active">Новости</a>
+										<a href="shop.php" class="navbar-link menu-modal__link">Магазин</a>
+										<a href="forbes.php" class="navbar-link menu-modal__link">FORBES</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="posts">
+					<div class="posts__container container">
+						<div class="posts__title section-title">Новости<span>Проекта</span></div>
+						<div class="posts__items">
+							<div class="posts-list">
+								<div class="posts-list__items">
+										<?php
+										$sql = "SELECT * FROM `news__site` ORDER BY `id` DESC LIMIT 4";
+										$result = mysqli_query($connect, $sql);
+
+									while ($row = mysqli_fetch_assoc($result)) { ?>
+									<div class="post-card posts-list__item">
+										<picture class="post-card__picture">
+											<img src="news/<?=$row['href']?>" alt="" class="post-card__image">
+										</picture> 
+										<a href="/" class="post-card__title"><?= $row['title'] ?></a>
+										<div class="post-card__description"><?= $row['description'] ?></div>
+										<div class="post-card__date"><?= $row['date'] ?></div>
+										<div class="post-card__action">
+											<a href="/" target="_blank" class="post-card__link"> 
+												Подробнее 
+												<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAMCAYAAACA0IaCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfklEQVQoka3SQQrEIAyF4V9IF132/hfzFjWKKMxAuynU2lKIM2/jQvLxJDrvPcZsx+n6C6m1WrEWvYCSc7YijrPdBZSU0kirHpyAr8QYR7Ae/ACLhBC2lwFLVlHVP1kgqnpbsSHtq+ZfmrWQg/Ft3iAY+2ePEICUUuy9HiCAHbI+MRb4roFpAAAAAElFTkSuQmCC" alt="">
+											</a>
+										</div>
+									</div>
+									<?php }?>
+									<div id="vk_post_-223141113_43"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_43", -223141113, 43, 'Ysn4OJCSp6hXOZs7938Xxc4TLrNg');
+  }());
+</script>
+<div id="vk_post_-223141113_40"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_40", -223141113, 40, 'aRP9bRNlI5bF8Nh_2FYkJKiAaTsB');
+  }());
+</script>
+<div id="vk_post_-223141113_37"></div>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  (function() {
+    VK.Widgets.Post("vk_post_-223141113_37", -223141113, 37, 'pMkdxbZZdaddRdT2JplPDTPCUTgd');
+  }());
+</script>
+                				</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer class="footer">
+					<div class="footer__container container">
+						<div class="logo"><img src="assets/logo.svg" alt="Логотип Radmir CRMP." class="logo__image">
+							<div class="logo__name"> XTREME<span>BONUS © 2024</span></div>
+						</div>
+						<div class="footer__links"><a href="https://radmir.online/terms" target="_blank" class="footer__link">Пользовательское соглашение</a> <a href="https://radmir.online/privacy-policy" target="_blank" class="footer__link">Политика конфиденциальности</a> <a href="https://vk.com/radmirsup" target="_blank" class="footer__link">Поддержка в чате</a> <a href="mailto:crmp@radmir.games" class="footer__link">crmp@radmir.games</a></div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+	<script src="assets/app.js" defer></script>
+</body>
+
+</html>
